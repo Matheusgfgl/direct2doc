@@ -16,10 +16,11 @@
       "dom.iterable",
       "scripthost"],
     "types": ["vite/client"],
-    "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }]
+    "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
+    "composite": true,
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/config/veeValidate/index.js", "src/mixins/defineScreenSizeMixin.js", "src/mixins/defineScreenSizeMixin.js", "src/config/axios/index.js"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/config/veeValidate/index.ts", "src/config/axios/index.ts"],
   "exclude": [
     "node_modules"
-  ]
+  ],
 }

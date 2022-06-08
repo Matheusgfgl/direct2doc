@@ -1,15 +1,8 @@
 
 
 <script lang="ts">
-  // Mixins
-  import { defineScreenSize } from './mixins/defineScreenSizeMixin.js';
-
   export default {
     name: 'App',
-
-    mixins: [
-      defineScreenSize,
-    ],
 
     computed: {
       routerViewKey() {

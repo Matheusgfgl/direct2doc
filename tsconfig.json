@@ -13,6 +13,6 @@
     "lib": ["esnext", "dom"],
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/config/veeValidate/index.js", "src/mixins/defineScreenSizeMixin.js", "src/mixins/defineScreenSizeMixin.js", "src/config/axios/index.js"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/config/veeValidate/index.ts", "src/config/axios/index.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }],
 }
