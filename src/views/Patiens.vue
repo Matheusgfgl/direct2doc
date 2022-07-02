@@ -1,5 +1,5 @@
 <template>
-  <div class="appointments">
+  <div class="patients">
     <v-card class="elevation-0">
       <v-card-title class="d-block page-header">
         <v-row>
@@ -91,11 +91,11 @@
   import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  name: 'Appointments',
+  name: 'patients',
 
   data() {
     return {
-      appointments: [],
+      patients: [],
       loading: false,
     };
   },
@@ -104,27 +104,17 @@ export default {
     //
   },
 
-  created(): void {
-    this.getAppointments(1);
+  setup(): void {
+    //
   },
 
   methods: {
     ...mapActions([
-      'getUserShifts',
+      '',
     ]),
 
-    async getAppointments(userId : string): Promise<void> {
-      console.log('appointments');
-      this.loading = true;
-      try {
-      
-      this.getUserShifts(userId)
-      } catch (error) {
-        console.error('Ocorreu um erro ao listar candidatos');
-        this.appointments = null;
-      }
-
-      this.loading = false;
+    async getPatiens(userId : string): Promise<void> {
+      //
     }
   },
 
@@ -135,7 +125,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .appointments {
+  .patients {
     display: flex;
     flex-direction: column;
     align-items: center;

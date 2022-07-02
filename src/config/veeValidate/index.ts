@@ -1,12 +1,11 @@
 import dayjs from 'dayjs';
 
-/*
-//import { extend, setInteractionMode, configure } from 'vee-validate';
+import { configure } from 'vee-validate';
 //import {
   // eslint-disable-next-line camelcase
  // required, email, confirmed, min, max, regex, alpha_spaces,
 //} from 'vee-validate/dist/rules';
-import { cpfValidator, passwordValidator } from '../../../helpers';
+//import { cpfValidator, passwordValidator } from '../../../helpers';
 
 configure({
   // eslint-disable-next-line no-underscore-dangle
@@ -18,7 +17,7 @@ configure({
 });
 
 // Interaction
-setInteractionMode('eager');
+//setInteractionMode('eager');
 
 // Install rules
 //extend('required', required);
@@ -28,6 +27,7 @@ setInteractionMode('eager');
 //extend('max', max);
 //extend('regex', regex);
 //extend('alpha_spaces', alpha_spaces);
+/*
 extend('birthdate', {
   params: ['lang'],
   validate(value: string | number | dayjs.Dayjs | Date | null | undefined, { lang }: any) {

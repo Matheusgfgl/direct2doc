@@ -4,34 +4,49 @@
 				<ul class="sidebar-menu list" id="menuSub">
 					<li class="header">TELE</li>
 					<li class="sidebar-menu__item" id="convenios">
-						<a href="https://www.direct2doc.com.br/convenios" class="name">
+						<router-link 
+							:to="{ name: 'Agreements' }"
+							class="name"
+						>
 							<i class="fa fa-medkit" aria-hidden="true"></i>
 							<span class="label"> Convênios </span>
-						</a>
+						</router-link>
 					</li>
 					<li class="sidebar-menu__item" id="pacientes">
-						<a href="https://www.direct2doc.com.br/pacientes" class="name">
+						<router-link 
+							:to="{ name: 'Patients' }" 
+							class="name"
+						>
 							<i class="fa fa-medkit" aria-hidden="true"></i>
 							<span class="label"> Pacientes </span>
-						</a>
+						</router-link>
 					</li>
 					<li class="sidebar-menu__item" id="tele_exames">
-						<a href="https://www.direct2doc.com.br/exame" class="name">
+						<router-link 
+							:to="{ name: 'Appointments' }"
+							class="name"
+						>
 							<i class="fa fa-list-alt" aria-hidden="true"></i>
 							<span class="label">Consultas</span>
-						</a>
+						</router-link>
 					</li>
 					<li class="sidebar-menu__item" id="customer">
-						<a href="https://www.direct2doc.com.br/customer" class="name">
+						<router-link 
+							:to="{ name: 'Customer' }" 
+							class="name"
+						>
 							<i class="fa fa-child" aria-hidden="true"></i> 
 							<span class="label">Clínicas // Hospitais </span>
-							</a>
+							</router-link>
 					</li>
 					<li class="sidebar-menu__item" id="user">
-						<a href="https://www.direct2doc.com.br/user" class="name">
+						<router 
+							:to="{ name: 'User' }" 
+							class="name"
+						>
 							<i class="fa fa-users" aria-hidden="true"></i> 
 							<span class="label">Usuários</span>
-						</a>
+						</router>
 					</li>
 				</ul>
 		</section>

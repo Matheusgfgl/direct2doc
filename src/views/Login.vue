@@ -2,11 +2,11 @@
   <div class="login">
     <img src="../../public/direct2doc.png" alt="Logo" class="login__logo">
       <div class="login__content">
-      <Form
+      <Form v-slot="{ invalid }"
         ref="accessForm"
         tag="form"
         class="form-styled login__form container"
-        @submit.prevent="formSubmitMethod"
+        @submit="handleSubmit"
       >
         <p class="login__content__text">Acesse consultas e prontuários com toda praticidade e segurança</p>
         <div class="access-page__error">
@@ -17,7 +17,7 @@
             <template slot="icon">
               <SvgElement
                 name="Alert"
-                :title="$t('ALERT_MESSAGE.TITLE')"
+                title="Erro"
                 width="1.5rem"
                 height="100%"
               />
@@ -27,13 +27,13 @@
         </div>
 
         <!-- User email -->
-        <Field v-slot="{ errors }"
+        <Field  v-slot="{ classes }"
           ref="emailField"
           key="email-input"
           name="Email"
           class="input-item"
           tag="div"
-          :rules="isRequired"
+          :rules="isRequired(user.email)"
         >
           <div class="input-item input-item__floated-label">
             <label
@@ -56,18 +56,14 @@
             >
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
-
-          <span class="input-item__feedback input-item__feedback--invalid">
-            {{ errors.field }}
-          </span>
         </Field>
         <!-- User password -->
-        <Field v-slot="{ errors }"
+        <Field  v-slot="{ errors, classes }"
           key="password-input"
-          name="Senha"
+          name="senha"
           class="input-item"
           tag="div"
-          :rules="isRequired"
+          :rules="isRequired(user.password)"
           vid="senha"
         >
           <div class="input-item input-item__floated-label">
@@ -108,9 +104,9 @@
             </button>
           </div>
 
-          <span class="input-item__feedback input-item__feedback--invalid">
-            {{ errors.field }}
-          </span>
+          <div class="input-item__feedback input-item__feedback--invalid">
+            {{ errors[0] }}
+          </div>
         </Field>
         <div class="login__form__actions">
           <input class="checkbox" type="checkbox">
@@ -133,20 +129,19 @@
 
 <script lang="ts">
 import { useField } from 'vee-validate';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Login',
 
-  setup() {
-    // Validator function
-    const isRequired = value => (value ? true : 'This field is required');
-    const { value, errorMessage } = useField('field', isRequired);
+  /*"setup(): Object {
+    const { value, errorMessage } = useField('field',  this.isRequired);
 
     return {
       value,
       errorMessage,
     };
-  },
+  }, */
 
   data() {
     return {
@@ -158,6 +153,7 @@ export default {
         email: '',
         password: '',
       },
+      loading: false,
       showPassword: false,
       showConfirmationPassword: false,
     };
@@ -170,9 +166,45 @@ export default {
   },
 
   methods: {
+    ...mapActions([
+      'userLogin',
+    ]),
+
     tooglePassword(): void {
       this.showPassword = !this.showPassword;
     },
+
+    isRequired(value) {
+      return value ? true : 'Usuario e senha são obrigatórios';
+    },
+
+    async handleSubmit() {
+      this.loading = true
+
+      const isFormValid = this.user.email && this.user.password;
+
+      if (!isFormValid) {
+        this.formFeedback = {
+          type: 'error',
+          message: 'Precisamos de seu email e senha para continuar',
+        };
+        return;
+      }
+
+      try {
+        await this.userLogin(this.user);
+
+        //this.$router.replace({ name: 'Appointments' });
+      } catch (error) {
+        this.formFeedback = {
+          type: 'error',
+          message: 'Usuario ou senha incorretos',
+        };
+      }
+
+      this.loading = false;
+    },
+
   },
 }
 

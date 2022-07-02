@@ -76,7 +76,8 @@ export default {
 
   .navbar-custom-menu {
     background-color: #222d32;
-    display: flex;
+    display: none;
+
   }
 
   .user-header {

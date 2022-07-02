@@ -24,9 +24,29 @@ import { store } from '../store/index';
           component: () => import(/* webpackChunkName: "Login" */ '@/views/Home.vue'),
         },
         {
-          path: 'exames',
-          name: 'Appoitments',
+          path: 'convenios',
+          name: 'Agreements',
           component: () => import(/* webpackChunkName: "Login" */ '@/views/Appointments.vue'),
+        },
+        {
+          path: 'pacientes',
+          name: 'Patients',
+          component: () => import(/* webpackChunkName: "Login" */ '@/views/Patiens.vue'),
+        },
+        {
+          path: 'exames',
+          name: 'Appointments',
+          component: () => import(/* webpackChunkName: "Login" */ '@/views/Appointments.vue'),
+        },
+        {
+          path: 'customer',
+          name: 'Customer',
+          component: () => import(/* webpackChunkName: "Login" */ '@/views/Customer.vue'),
+        },
+        {
+          path: 'user',
+          name: 'User',
+          component: () => import(/* webpackChunkName: "Login" */ '@/views/User.vue'),
         },
       ],
     }
