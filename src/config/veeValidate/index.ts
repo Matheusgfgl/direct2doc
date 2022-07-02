@@ -1,14 +1,16 @@
 import dayjs from 'dayjs';
-import { extend, setInteractionMode, configure } from 'vee-validate';
-import {
+
+/*
+//import { extend, setInteractionMode, configure } from 'vee-validate';
+//import {
   // eslint-disable-next-line camelcase
-  required, email, confirmed, min, max, regex, alpha_spaces,
-} from '@/vee-validate/dist/rules';
+ // required, email, confirmed, min, max, regex, alpha_spaces,
+//} from 'vee-validate/dist/rules';
 import { cpfValidator, passwordValidator } from '../../../helpers';
 
 configure({
   // eslint-disable-next-line no-underscore-dangle
-  defaultMessage: (field, values) =>  values,
+  defaultMessage: (field: any, values: any) =>  values,
   classes: {
     valid: 'input-item__field--valid',
     invalid: 'input-item__field--invalid',
@@ -19,16 +21,16 @@ configure({
 setInteractionMode('eager');
 
 // Install rules
-extend('required', required);
-extend('email', email);
-extend('confirmed', confirmed);
-extend('min', min);
-extend('max', max);
-extend('regex', regex);
-extend('alpha_spaces', alpha_spaces);
+//extend('required', required);
+//extend('email', email);
+//extend('confirmed', confirmed);
+//extend('min', min);
+//extend('max', max);
+//extend('regex', regex);
+//extend('alpha_spaces', alpha_spaces);
 extend('birthdate', {
   params: ['lang'],
-  validate(value, { lang }) {
+  validate(value: string | number | dayjs.Dayjs | Date | null | undefined, { lang }: any) {
     const language = lang.replace(/_/g, '-').toLowerCase();
 
     return dayjs(value, dayjs().locale(language).localeData().longDateFormat('L'), language, true).isValid()
@@ -36,12 +38,13 @@ extend('birthdate', {
   },
 });
 extend('cpf', {
-  validate(value) {
+  validate(value: any) {
     return cpfValidator(value);
   },
 });
 extend('password', {
-  validate(value) {
+  validate(value: any) {
     return passwordValidator(value);
   },
 });
+*/

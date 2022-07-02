@@ -3,7 +3,9 @@
     class="newLayout-layout"
     :class="layoutClass"
   >
+    <Header />
     <main class="page-content">
+      <Navbar />
       <router-view v-slot="{ Component }">
         <transition 
           name="slide-fade"
@@ -17,12 +19,20 @@
 </template>
 
 <script lang="ts">
+  import Header from '../components/common/Header.vue';
+  import Navbar from '../components/common/Navbar.vue';
+
   export default {
     name: 'Default',
 
+    components: {
+      Header,
+      Navbar,
+    },
+
     metaInfo() {
       return {
-        title: 'Inspiralli ON',
+        title: 'Direct2Doc',
       };
     },
   };
@@ -40,33 +50,31 @@
     // Content of pages
     .page-content {
       height: 100%;
-      padding-top: 3.75rem;
-      flex: 1;
+      display: flex;
+      flex-direction: row;
+    /*
 
-      // Block with reduced width
-      /*&__desktop {
-        &-large {
-          @include screen(tablet-up) {
-            width: 80%;
-            margin: 0 auto;
-          }
-        }
-
-        &-medium {
-          @include screen(tablet-up) {
-            width: 60%;
-            margin: 0 auto;
-          }
-        }
-
-        &-small {
-          @include screen(tablet-up) {
-            width: 40%;
-            margin: 0 auto;
-          }
+      &-large {
+        @include screen(tablet-up) {
+          width: 80%;
+          margin: 0 auto;
         }
       }
-      */
-    }
+
+      &-medium {
+        @include screen(tablet-up) {
+          width: 60%;
+          margin: 0 auto;
+        }
+      }
+
+      &-small {
+        @include screen(tablet-up) {
+          width: 40%;
+          margin: 0 auto;
+        }
+      }
+    */
+    }  
   }
 </style>

@@ -9,7 +9,7 @@ axios.defaults.headers.common.Accept = 'application/json';
 // --- Instances
 
 // InPeace API
-const InspiraAPI = axios.create({
+const Direct2Doc = axios.create({
   baseURL: process.env.VUE_APP_API_V1,
   // timeout: 30000,
 });
@@ -26,6 +26,6 @@ const realtimeAPI = axios.create({
 
 // --- Export
 export {
-  InspiraAPI,
+  Direct2Doc,
   realtimeAPI,
 };

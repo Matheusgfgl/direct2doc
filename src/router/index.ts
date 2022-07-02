@@ -6,6 +6,11 @@ import { store } from '../store/index';
  const routes = 
  [
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "Login" */ '@/views/Login.vue'),
+  },
+  {
     path: '',
       meta: {
         layout: 'HOME',
@@ -16,7 +21,12 @@ import { store } from '../store/index';
         {
           path: '',
           name: 'Home',
-          component: () => import(/* webpackChunkName: "Login" */ '@/views/Login.vue'),
+          component: () => import(/* webpackChunkName: "Login" */ '@/views/Home.vue'),
+        },
+        {
+          path: 'exames',
+          name: 'Appoitments',
+          component: () => import(/* webpackChunkName: "Login" */ '@/views/Appointments.vue'),
         },
       ],
     }

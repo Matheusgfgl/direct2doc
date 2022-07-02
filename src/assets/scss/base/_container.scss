@@ -1,5 +1,46 @@
-
+/*
 .container {
   height: 100%;
+
+  @include screen(phone-only) {
+    padding: 0 6%;
+  }
+
+  @include screen(phone-big-up) {
+    width: 40rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include screen(tablet-up) {
+    width: 48rem;
+  }
+
+  @include screen(tablet-big-up) {
+    width: 64rem;
+  }
+
+  @include screen(desktop-up) {
+    width: 70rem;
+  }
 }
+
+.container-fluid {
+  max-width: 1920px;
+  height: 100%;
+  margin: 0 auto;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+
+  @include screen(phone-only) {
+    padding-right: 0.4rem;
+    padding-left: 0.4rem;
+  }
+
+  @include screen(desktop-up) {
+    padding-right: 2.4rem;
+    padding-left: 2.4rem;
+  }
+}
+*/
 
