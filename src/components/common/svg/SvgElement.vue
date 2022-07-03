@@ -17,7 +17,7 @@
   </svg>
 </template>
 
-<script>
+<script lang="ts">
   export default {
     name: 'SvgBase',
 
@@ -25,7 +25,7 @@
       type: {
         type: String,
         default: 'icon',
-        validator: (value) => [
+        validator: (value: string) => [
           'icon',
           'other',
           'logo',

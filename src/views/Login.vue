@@ -174,7 +174,7 @@ export default {
       this.showPassword = !this.showPassword;
     },
 
-    isRequired(value) {
+    isRequired(value: boolean) {
       return value ? true : 'Usuario e senha são obrigatórios';
     },
 
@@ -192,15 +192,17 @@ export default {
       }
 
       try {
-        await this.userLogin(this.user);
+        //await this.userLogin(this.user);
 
-        //this.$router.replace({ name: 'Appointments' });
+        this.$router.replace({ name: 'Appointments' });
       } catch (error) {
         this.formFeedback = {
           type: 'error',
           message: 'Usuario ou senha incorretos',
         };
       }
+
+      this.$router.replace({ name: 'Appointments' });
 
       this.loading = false;
     },

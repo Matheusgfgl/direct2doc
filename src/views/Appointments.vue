@@ -30,20 +30,9 @@
       </v-card-title>
       <v-card-text class="page-body mx-0">
         <v-container fluid>
-          <v-row>
-            <v-tabs background-color="#f2f4f8" flat class="my-4 ml-3" height="35">
-              <v-tabs-slider color="#00ADAB"></v-tabs-slider>
-              <v-tab class="reserve-filter pa-0 mr-6" @click="isActive = true"
-                >Profissionais ativos</v-tab
-              >
-              <v-tab class="reserve-filter pa-0" @click="isActive = false"
-                >Profissionais inativos</v-tab
-              >
-            </v-tabs>
-          </v-row>
           <v-data-table
-            :headers="header"
-            :items="items"
+            :headers="AppointmentHeader"
+            :items="appointments"
             :search="search"
             :footer-props="{
               'items-per-page-options': [10, 25, 50, 100],
@@ -89,6 +78,9 @@
 <script lang="ts">
 // Vuex
   import { mapGetters, mapActions } from 'vuex';
+  import AppointmentHeader from '../headers/appointments-header.vue';
+  import Headers from '../types/header';
+  import appointmentInterface from '../types/appointment';
 
 export default {
   name: 'Appointments',
@@ -97,6 +89,9 @@ export default {
     return {
       appointments: [],
       loading: false,
+      search: '',
+      header: null,
+      items: null
     };
   },
 
@@ -105,7 +100,7 @@ export default {
   },
 
   created(): void {
-    this.getAppointments(1);
+    //this.getAppointments(1);
   },
 
   methods: {
@@ -118,7 +113,11 @@ export default {
       this.loading = true;
       try {
       
-      this.getUserShifts(userId)
+      const response = this.getUserShifts(userId);
+
+      const items: appointmentInterface[] = response;
+      this.appointments = items;
+
       } catch (error) {
         console.error('Ocorreu um erro ao listar candidatos');
         this.appointments = null;

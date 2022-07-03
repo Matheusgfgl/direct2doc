@@ -5,6 +5,7 @@ import { Direct2Doc } from '../../config/axios';
 export default {
   state: {
     user: null,
+    credentials: null,
   },
 
   actions: {
@@ -17,6 +18,7 @@ export default {
         });
   
         dispatch('userSetCredentials', response.data);
+        await commit('USER_SET_DATA', response.data);
   
         return Promise.resolve(response);
       } catch (error) {
@@ -26,9 +28,7 @@ export default {
         return Promise.reject(error);
       }
     },
-  },
-  
-  mutations: {
+
     userSetCredentials({ commit }, { token, refreshToken }) {
       // Setting the api token in axios instance
       Direct2Doc.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -41,6 +41,34 @@ export default {
         token: token,
         refreshToken: refreshToken,
       });
+    },
+
+    async userLogOut({ commit, dispatch }) {
+      Promise.allSettled([
+        // Reset user data
+        commit('USER_RESET_ALL_DATA'),
+        // Reset chat data
+        dispatch('chatResetUser'),
+        // Reset inpeace play data
+        dispatch('inpcPlayClearData'),
+      ]);
+
+      // Remove session and local data
+      window.localStorage.removeItem('refreshToken');
+      window.sessionStorage.removeItem('token');
+
+      // Removing authorization from api requests
+      delete Direct2Doc.defaults.headers.common.Authorization;
+    },
+  },
+  
+  mutations: {
+    USER_SET_CREDENTIALS(state, credentials) {
+      state.credentials = credentials;
+    },
+
+    USER_SET_DATA(state, payload) {
+      state.user = payload;
     },
   }
 }

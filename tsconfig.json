@@ -11,9 +11,10 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowJs": true,
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/config/veeValidate/index.ts", "src/config/axios/index.ts"],
+  "include": ["src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/config/veeValidate/index.ts", "src/config/axios/index.ts"],
   "references": [
     { "path": "./tsconfig.node.json" }
   ],

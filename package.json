@@ -19,6 +19,7 @@
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.3",
     "@types/node": "^17.0.45",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",

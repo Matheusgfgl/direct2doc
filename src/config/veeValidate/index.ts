@@ -6,7 +6,7 @@ import { configure } from 'vee-validate';
  // required, email, confirmed, min, max, regex, alpha_spaces,
 //} from 'vee-validate/dist/rules';
 //import { cpfValidator, passwordValidator } from '../../../helpers';
-
+/*
 configure({
   // eslint-disable-next-line no-underscore-dangle
   defaultMessage: (field: any, values: any) =>  values,
@@ -27,7 +27,7 @@ configure({
 //extend('max', max);
 //extend('regex', regex);
 //extend('alpha_spaces', alpha_spaces);
-/*
+
 extend('birthdate', {
   params: ['lang'],
   validate(value: string | number | dayjs.Dayjs | Date | null | undefined, { lang }: any) {
