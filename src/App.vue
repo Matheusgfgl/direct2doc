@@ -2,8 +2,8 @@
 
 <script lang="ts">
   // Mixins
-  import clientBootstrap from '@/mixins/screenSizeMixin';
-  import defineScreenSize from '@/mixins/defineScreenSizeMixin';
+  import clientBootstrap from './mixins/screenSizeMixin';
+  import defineScreenSize from './mixins/defineScreenSizeMixin';
 
   export default {
     name: 'App',
@@ -15,9 +15,10 @@
 
     computed: {
       routerViewKey(): any {
-        const matched = this.$route.matched.find((record) => record.meta.layout);
+        //const matched = this.$route.matched.find((record) => record.meta.layout);
 
-        return matched ? matched.meta.layout : 'DEFAULT';
+        return 'DefaultLayout';
+        //return matched ? matched.meta.layout : 'DEFAULT';
       },
     },
 

@@ -18,7 +18,9 @@
 </template>
 
 <script lang="ts">
-  export default {
+  import { defineComponent } from 'vue'
+
+   export default defineComponent({
     name: 'SvgBase',
 
     props: {
@@ -75,7 +77,7 @@
         case 'icon-PasswordHidden':
           return this.defaultData('21', '21', '0 0 21 21');
         default:
-          return this.defaultData('20');
+          return this.defaultData('20', '20', '0 0 20 20');
         }
       },
     },
@@ -91,7 +93,7 @@
     },
 
     methods: {
-      defaultData(width, height = null, viewBox = null) {
+      defaultData(width: string | number , height: string | number , viewBox: string): Object {
         return {
           title: this.title ? this.title : this.name,
           width: this.width ? this.width : width,
@@ -100,10 +102,11 @@
         };
       },
 
-      loadIcon() {
+      loadIcon():void {
         // eslint-disable-next-line prefer-template
-        this.iconElement = () => import('../' + this.type + '/' + this.name + '.vue');
+
+        this.iconElement = () => import(`../${this.type}/${this.name}.vue`);
       },
     },
-  };
+  });
 </script>

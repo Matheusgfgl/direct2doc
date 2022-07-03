@@ -9,6 +9,7 @@ module.exports = {
       swSrc: 'public/service-worker.js',
     },
   },
+  publicPath: process.env.BASE_URL,
   css: {
     loaderOptions: {
       scss: {

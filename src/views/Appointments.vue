@@ -23,7 +23,7 @@
             class="add-professional elevation-0 mr-3"
             color="#00ADAB"
             dark
-            @click="openNewProfessionalModal"
+            @click="openAppointmentModal"
             >Novo Profissional</v-btn
           >
         </v-row>
@@ -31,7 +31,7 @@
       <v-card-text class="page-body mx-0">
         <v-container fluid>
           <v-data-table
-            :headers="AppointmentHeader"
+            :headers="header"
             :items="appointments"
             :search="search"
             :footer-props="{
@@ -44,7 +44,7 @@
             class="mt-3 mb-3"
           >
             <template v-slot:item="{ item }">
-              <tr @click="openInner(item)">
+              <tr @click="goToAppointment(item)">
                 <td>
                   {{ item.name }}
                 </td>
@@ -52,10 +52,10 @@
                   {{ item.contact.email }}
                 </td>
                 <td>
-                  <span>{{ setCrmFormatted(item.crMs) }}</span>
+                  <span>Teste</span>
                 </td>
                 <td>
-                  <span>{{ setSpecialitiesFormatted(item.specialities) }} </span>
+                  <span>Teste </span>
                 </td>
                 <td>
                   <span class="activePills" v-if="item.isActive === true"
@@ -78,12 +78,13 @@
 <script lang="ts">
 // Vuex
   import { mapGetters, mapActions } from 'vuex';
-  import AppointmentHeader from '../headers/appointments-header.vue';
-  import Headers from '../types/header';
-  import appointmentInterface from '../types/appointment';
+  import AppointmentHeader from '../headers/appointment-header';
+ // import Headers from '../types/header';
+  import appointmentInterface , { appointmentInitalValue } from '../types/appointment';
+  import { defineComponent } from 'vue'
 
-export default {
-  name: 'Appointments',
+  export default defineComponent({
+    name: 'Appointments',
 
   data() {
     return {
@@ -95,9 +96,9 @@ export default {
     };
   },
 
-  computed: {
-    //
-  },
+  appointmentHeader: AppointmentHeader,
+  Headers: Headers,
+  appointments: appointmentInitalValue,
 
   created(): void {
     //this.getAppointments(1);
@@ -120,16 +121,21 @@ export default {
 
       } catch (error) {
         console.error('Ocorreu um erro ao listar candidatos');
-        this.appointments = null;
+        this.appointments = [];
       }
 
       this.loading = false;
+    },
+
+    goToAppointment(item : object): void {
+      console.log(item);
+    },
+
+    openAppointmentModal(item : object): void {
+      console.log(item);
     }
   },
-
-
-  
-}
+});
 
 </script>
 

@@ -52,7 +52,6 @@
                 input-item__field--normal input-item__field"
               :class="classes"
               mode="aggressive"
-              @blur="validateEmail"
             >
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
@@ -131,7 +130,9 @@
 import { useField } from 'vee-validate';
 import { mapActions } from 'vuex';
 
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'Login',
 
   /*"setup(): Object {
@@ -142,12 +143,13 @@ export default {
       errorMessage,
     };
   }, */
+  
 
   data() {
     return {
       formFeedback: {
-        type: null,
-        message: null,
+        type: '',
+        message: '',
       },
       user: {
         email: '',
@@ -174,7 +176,7 @@ export default {
       this.showPassword = !this.showPassword;
     },
 
-    isRequired(value: boolean) {
+    isRequired(value: string) {
       return value ? true : 'Usuario e senha são obrigatórios';
     },
 
@@ -208,7 +210,7 @@ export default {
     },
 
   },
-}
+});
 
 </script>
 
