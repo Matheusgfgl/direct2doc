@@ -13,8 +13,11 @@
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "allowJs": true,
-    "baseUrl": "types",
+    "baseUrl": ".",
     "typeRoots": ["./node_modules/@types", "./src/types", "types"],
+    "paths": {
+      "@/*": ["src/*"]
+    },
   },
   "include": ["src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/config/veeValidate/index.ts", "src/config/axios/index.ts"],
   "references": [

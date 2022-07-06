@@ -12,8 +12,8 @@ export default defineConfig(() => {
       BASE_URL: JSON.stringify(baseUrl),
     },
     resolve:{
-      alias:{
-        '@' : path.resolve(__dirname, './src')
+      alias: {
+        '@': `${path.resolve(__dirname, 'src')}/`
       },
     },
     plugins: [

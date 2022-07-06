@@ -8,12 +8,10 @@ axios.defaults.headers.common.Accept = 'application/json';
 
 // --- Instances
 
-// Direcr2Doc API
+// InPeace API
 const Direct2Doc = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: 'develop.directrad.com.br',
+  // timeout: 30000,
 });
 
 // --- Export

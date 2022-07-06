@@ -14,15 +14,15 @@
       <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img width="30" style="filter: brightness(0) invert(1);" src="https://www.direct2doc.com.br/assets/uploads/files/admin/tele/411/94098bd8c4b75b48a24f2d196e6993e1.png">
+          <button @click.prevent="showCustomMenu = !showCustomMenu" class="dropdown-toggle" data-toggle="dropdown">
+            <img class="dropdown-toggle__icon" width="30" style="filter: brightness(0) invert(1);" src="https://www.direct2doc.com.br/assets/uploads/files/admin/tele/411/94098bd8c4b75b48a24f2d196e6993e1.png">
             <b>Tele</b>
             <span class="hidden-xs">Rede Meridional</span>
-          </a>
-              <ul class="dropdown-menu">
+          </button>
+              <ul class="dropdown-menu" :class="{'dropdown-menu--active' : showCustomMenu }" >
                 <li class="user-header">
                   <img class="main-header__logo" style="filter: brightness(0) invert(1);" src="https://www.direct2doc.com.br/assets/uploads/files/admin/tele/411/94098bd8c4b75b48a24f2d196e6993e1.png">                                                                                                                                                         
-                    <p>
+                    <p class="user-header__text">
                       Rede Meridional                                    
                       <small>Último login  02/07/2022 11:36</small>
                     </p>
@@ -55,11 +55,17 @@
 
 <script lang="ts">
 import VueRouter from 'vue-router';
+import { defineComponent } from 'vue'
 
-export default {
+ export default defineComponent({
+  name: 'header',
   
-  name: 'header'
-}
+  data() {
+    return {
+      showCustomMenu: false,
+    };
+  },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -69,7 +75,7 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 4rem;
+  height: 3.5rem;
   padding: 0 1rem;
   width: 100%;
 
@@ -77,10 +83,45 @@ export default {
     width: 6rem;
   }
 
+  .user-menu {
+    display: flex;
+    color: #fff;
+  }
+
+  .navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 16rem;
+    color: white;
+  }
+
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+
+    &__icon {
+      margin-right: 0.5rem;
+    }
+  }
+
   .navbar-custom-menu {
     background-color: #222d32;
-    display: none;
+    display: flex;
+  }
 
+  .dropdown-menu {
+    position: absolute;
+    right: 5%;
+    top: 3.5rem;
+    left: auto;
+    border: 1px solid #ddd;
+    background-color: #222d32;
+    display: none;
+  }
+
+  .dropdown-menu--active {
+    display: flex;
+    flex-direction: column;
   }
 
   .user-header {
@@ -88,8 +129,16 @@ export default {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
     font-size: 14px;
+
+    &__text {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 15rem;
+    }
   }
 
   .user-footer {
@@ -97,18 +146,10 @@ export default {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 0.5rem;
+    padding: 1rem 0 !important;
     background-color: #f9f9f9;
     padding: 10px;
     color: var(--gray-500);
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    right: 5%;
-    left: auto;
-    border: 1px solid #ddd;
-    background-color: #222d32;
   }
 }
 

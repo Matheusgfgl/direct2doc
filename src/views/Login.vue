@@ -131,7 +131,6 @@ import { mapActions } from 'vuex';
 import { defineComponent } from 'vue'
 import VueRouter from 'vue-router';
 import { Field, Form } from 'vee-validate';
-import axios from 'axios';
 
 export default defineComponent({
   name: 'Login',
@@ -190,9 +189,7 @@ export default defineComponent({
       }
 
       try {
-        await axios.post('asdasddevelop.directrad.com.br/login', {
-          data: this.user,
-        });
+        await this.userLogin(this.user);
 
         this.$router.replace({ name: 'Appointments' });
       } catch (error) {

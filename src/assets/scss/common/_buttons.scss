@@ -181,6 +181,12 @@
     transition: 0.2s all ease-out;
     opacity: 0.8;
   }
+
+  &-flat {
+    color: var(--gray-500);
+    border: solid 1px var(--gray-300);
+    padding: 0.5rem;
+  }
 }
 
 button.slick-arrow {
