@@ -1,14 +1,14 @@
 import { Direct2Doc } from '../config/axios/index';
 
 export default {
-  getAgreementsList(churchId : string) {
+  getAgreementsList() {
     return Direct2Doc({
       method: 'POST',
       url: '/exame/listaConvenios',
     });
   },
 
-  getClinicsList(churchId : string) {
+  getClinicsList() {
     return Direct2Doc({
       method: 'POST',
       url: '/exame/listaClinicas',

@@ -5,7 +5,7 @@ export default {
   },
 
   getters: {
-    appStaffRoles: (state: Object) => state.appointments,
+    getAppointments: (state: Object) => state.appointments,
   },
 
   actions: {
