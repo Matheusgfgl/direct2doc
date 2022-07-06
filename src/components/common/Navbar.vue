@@ -2,7 +2,7 @@
 	<aside class="main-sidebar" style="padding-top: 60px;">
 		<section class="sidebar" id="menuSidebar" style="height: auto;">
 				<ul class="sidebar-menu list" id="menuSub">
-					<li class="header">TELE</li>
+					<li class="header sidebar-menu__item">TELE</li>
 					<li class="sidebar-menu__item" id="convenios">
 						<router-link 
 							:to="{ name: 'Agreements' }"
@@ -66,10 +66,19 @@ export default {
 	color: #b8c7ce;
 
 	.sidebar-menu {
+		padding-left: 0rem !important;
+
 		&__item {
 			display: flex;
 			align-items: center;
 			padding: 0.8rem 5px 0.8rem 1rem;
+			
+			.name {
+				display: flex;
+				align-items: center;
+				color: white !important;
+				text-decoration: none;
+			}
 
 			.label {
 				margin-left: 1rem;

@@ -63,11 +63,11 @@ export default {
   },
   
   mutations: {
-    USER_SET_CREDENTIALS(state, credentials) {
+    USER_SET_CREDENTIALS(state, payload : Object) {
       state.credentials = credentials;
     },
 
-    USER_SET_DATA(state, payload) {
+    USER_SET_DATA(state, payload : Object) {
       state.user = payload;
     },
   }

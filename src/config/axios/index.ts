@@ -8,24 +8,15 @@ axios.defaults.headers.common.Accept = 'application/json';
 
 // --- Instances
 
-// InPeace API
+// Direcr2Doc API
 const Direct2Doc = axios.create({
-  baseURL: process.env.VUE_APP_API_V1,
-  // timeout: 30000,
-});
-
-// Realtime API
-const realtimeAPI = axios.create({
-  baseURL: process.env.VUE_APP_PUSHER_API,
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
-    common: {
-      Authorization: `Bearer ${process.env.VUE_APP_PUSHER_API_BEARER}`,
-    },
+    'Content-Type': 'application/json',
   },
 });
 
 // --- Export
 export {
   Direct2Doc,
-  realtimeAPI,
 };

@@ -1,3 +1,5 @@
+<!-- 
+
 <template>
   <svg
     v-if="iconElement"
@@ -18,10 +20,23 @@
 </template>
 
 <script lang="ts">
+  import SvgInterface, { SvgInitialValue } from '../../../types/SvgElement';
   import { defineComponent } from 'vue'
 
    export default defineComponent({
     name: 'SvgBase',
+
+    iconElement: Object,
+
+    icondata:  {
+      width: '24',
+      height: '24',
+      viewBox: '0 0 24 24',
+      title: '',
+      color: '#000',
+    },
+
+    iconData: SvgInitialValue,
 
     props: {
       type: {
@@ -63,12 +78,12 @@
 
     data() {
       return {
-        iconElement: null,
+        iconElement: {},
       };
     },
 
     computed: {
-      iconData() {
+      iconData(): SvgInterface {
         const name = `${this.type}-${this.name}`;
 
         switch (name) {
@@ -93,7 +108,7 @@
     },
 
     methods: {
-      defaultData(width: string | number , height: string | number , viewBox: string): Object {
+      defaultData(width: string | number , height: string | number , viewBox: string): SvgInterface {
         return {
           title: this.title ? this.title : this.name,
           width: this.width ? this.width : width,
@@ -110,3 +125,4 @@
     },
   });
 </script>
+-->

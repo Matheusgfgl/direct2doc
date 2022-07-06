@@ -5,6 +5,8 @@
 </template>
 
 <script lang="ts">
+import VueRouter from 'vue-router';
+
 export default {
   name: 'Home',
 

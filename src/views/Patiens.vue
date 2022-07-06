@@ -87,6 +87,7 @@
 </template>
 
 <script lang="ts">
+  import VueRouter from 'vue-router';
 // Vuex
   import { mapGetters, mapActions } from 'vuex';
 

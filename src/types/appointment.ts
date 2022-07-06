@@ -1,4 +1,4 @@
-export default interface appointmentInterface {
+export default interface AppointmentInterface {
   applicationId: string;
   applicationStatus: number;
   candidateEmail: string;
@@ -13,7 +13,7 @@ export default interface appointmentInterface {
   startDate: string;
 }
 
-const appointmentInitalValue: appointmentInterface = {
+const appointmentInitalValue: AppointmentInterface = {
   applicationId: 'string',
   applicationStatus: 1,
   candidateEmail: '',

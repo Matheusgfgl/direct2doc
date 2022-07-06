@@ -77,6 +77,16 @@ a {
   background-color: transparent;
 }
 
+p, li, ul {
+  text-decoration: none;
+  margin-bottom: 0;
+}
+
+a:-webkit-any-link {
+  text-decoration: none !important;
+  color: #000 !important;
+}
+
 /**
  * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.

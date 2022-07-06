@@ -4,7 +4,7 @@ export default {
   postUserLogin(data : object) {
     return Direct2Doc({
       method: 'POST',
-      url: '/security/login_check',
+      url: '/login/',
       data,
     });
   },

@@ -11,7 +11,7 @@ export default {
   actions: {
     async getUserShifts({ commit } , userId:string) {
       try {
-        const res = await api.getAppointmentsList(userId);
+        const res = await api.getAppointmentList(userId);
 
         commit('SET_USER_APPOINTMENTS', res.data.oracaoMotivos);
 

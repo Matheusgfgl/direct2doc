@@ -2,7 +2,7 @@
   <div class="login">
     <img src="../../public/direct2doc.png" alt="Logo" class="login__logo">
       <div class="login__content">
-      <Form v-slot="{ invalid }"
+      <Form v-slot="{ }"
         ref="accessForm"
         tag="form"
         class="form-styled login__form container"
@@ -27,7 +27,7 @@
         </div>
 
         <!-- User email -->
-        <Field  v-slot="{ classes }"
+        <Field  v-slot="{ }"
           ref="emailField"
           key="email-input"
           name="Email"
@@ -50,14 +50,13 @@
               placeholder="Usuário"
               class="input-item__field
                 input-item__field--normal input-item__field"
-              :class="classes"
               mode="aggressive"
             >
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
         </Field>
         <!-- User password -->
-        <Field  v-slot="{ errors, classes }"
+        <Field  v-slot="{ errors }"
           key="password-input"
           name="senha"
           class="input-item"
@@ -79,7 +78,6 @@
               placeholder="Senha"
               class="input-item__field
               input-item__field--normal input-item__field"
-              :class="classes"
             >
             <button
               v-if="!showPassword"
@@ -113,7 +111,7 @@
           <button
           type="submit"
           class="login__form__button btn btn--color-primary"
-          :class="{ 'btn--disabled': invalid }"
+          :class="{ 'btn--disabled': false }"
         >
           <span class="btn__text">
             Login
@@ -131,20 +129,18 @@ import { useField } from 'vee-validate';
 import { mapActions } from 'vuex';
 
 import { defineComponent } from 'vue'
+import VueRouter from 'vue-router';
+import { Field, Form } from 'vee-validate';
+import axios from 'axios';
 
 export default defineComponent({
   name: 'Login',
 
-  /*"setup(): Object {
-    const { value, errorMessage } = useField('field',  this.isRequired);
-
-    return {
-      value,
-      errorMessage,
-    };
-  }, */
+  components: {
+    Field,
+    Form,
+  },
   
-
   data() {
     return {
       formFeedback: {
@@ -194,7 +190,9 @@ export default defineComponent({
       }
 
       try {
-        //await this.userLogin(this.user);
+        await axios.post('asdasddevelop.directrad.com.br/login', {
+          data: this.user,
+        });
 
         this.$router.replace({ name: 'Appointments' });
       } catch (error) {
@@ -203,8 +201,6 @@ export default defineComponent({
           message: 'Usuario ou senha incorretos',
         };
       }
-
-      this.$router.replace({ name: 'Appointments' });
 
       this.loading = false;
     },

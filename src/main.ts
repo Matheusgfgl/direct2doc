@@ -1,18 +1,22 @@
-import { createApp }  from 'vue'
-import '@/config/veeValidate/index'; // VeeValidate
-import dayjs from './config/dayjs/index'; // DayJS
-import { store } from './store/index'; // Store
-import router from './router/index'; // Router
+import { createApp } from 'vue'
 import App from './App.vue'
-import Vuetify from 'vuetify/lib/framework';
+import router from './router'
+import { store } from './store'
+import { loadFonts } from './plugins/webfontloader'
+import { Quasar } from 'quasar'
 
-// Vee Validade
-import { Field, Form } from 'vee-validate';
+// Import icon libraries
+import '@quasar/extras/material-icons/material-icons.css'
+import '@quasar/extras/material-icons-outlined/material-icons-outlined.css'
 
-const app = createApp(App).use(store).use(router).use(Vuetify);
-app.component("SvgElement", () => import('@/components/common/svg/SvgElement.vue'));
-app.component('Field', Field);
-app.component('Form', Form);
+// Import Quasar css
+import 'quasar/src/css/index.sass'
 
-app.mount("#app");
 
+loadFonts()
+
+createApp(App)
+  .use(router)
+  .use(store)
+  .use(Quasar)
+  .mount('#app')
