@@ -1,0 +1,1 @@
+.appointments{flex-direction:column;align-items:center;justify-content:center;height:100vh;width:100%;background:var(--gray-400)}.appointments .content-search{display:none}.appointments__content{display:flex;flex-direction:column;align-items:center;background:var(--white);margin:2rem 0;padding:1.5rem;width:100%;font-size:14px}

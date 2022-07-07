@@ -1,0 +1,1 @@
+import{_ as e,v as t,A as o,x as s}from"./index.bf3d371e.js";const _={name:"Home",data(){return{}},computed:{}},a={class:"home-page"},r=s("h1",null,"Customer",-1),n=[r];function c(d,u,m,p,i,l){return o(),t("div",a,n)}var h=e(_,[["render",c]]);export{h as default};
