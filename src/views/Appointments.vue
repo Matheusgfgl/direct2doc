@@ -218,7 +218,7 @@
   Headers: Headers,
 
   created(): void {
-    //this.getAppointments(1);
+    this.getAppointments();
   },
 
   methods: {
@@ -226,12 +226,12 @@
       'getUserShifts',
     ]),
 
-    async getAppointments(userId : string): Promise<void> {
+    async getAppointments(): Promise<void> {
       console.log('appointments');
       this.loading = true;
       try {
       
-      const response = this.getUserShifts(userId);
+      const response = this.getUserShifts();
 
       const items = response;
       console.log(items)

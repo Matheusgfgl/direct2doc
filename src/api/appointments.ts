@@ -1,16 +1,17 @@
 import { Direct2Doc } from '../config/axios/index';
 
 export default {
-  getAppointmentList(churchId : string) {
+  getAppointmentList(data : Object) {
     return Direct2Doc({
       method: 'POST',
-      url: 'develop.directrad.com.br/exame/ajax_list',
+      url: '/exame/ajax_list',
+      data,
     });
   },
   saveAppointment(data : Object) {
     return Direct2Doc({
       method: 'POST',
-      url: 'develop.directrad.com.br/exame/save',
+      url: '/exame/save',
       data,
     });
   },
