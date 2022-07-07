@@ -26,7 +26,7 @@ import { store } from '../store/index';
         {
           path: 'convenios',
           name: 'Agreements',
-          component: () => import(/* webpackChunkName: "Login" */ '@/views/Appointments.vue'),
+          component: () => import(/* webpackChunkName: "Login" */ '@/views/Agreements.vue'),
         },
         {
           path: 'pacientes',

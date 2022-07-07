@@ -4,7 +4,7 @@
       <v-card-title class="d-block page-header">
         <v-row>
           <v-col cols="12" md="12" lg="12" xl="12" class="pt-0">
-            <h3 class="page-title">Profissionais</h3>
+            <h3 class="page-title">Pacientes</h3>
           </v-col>
         </v-row>
         <v-row align="center">

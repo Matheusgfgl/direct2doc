@@ -4,7 +4,7 @@
       <v-card-title class="d-block page-header">
         <v-row>
           <v-col cols="12" md="12" lg="12" xl="12" class="pt-0">
-            <h3 class="page-title">Lista de consultas</h3>
+            <h3 class="page-title">Lista de Convenios</h3>
           </v-col>
         </v-row>
         <v-row align="center">
@@ -24,7 +24,7 @@
             color="#00ADAB"
             dark
             @click="openAppointmentModal"
-            >Novo Profissional</v-btn
+            >Adicionar Convênio</v-btn
           >
         </v-row>
       </v-card-title>
@@ -171,20 +171,7 @@
         </div>
         </div>
         <div class="q-pa-md">
-          <q-table
-            title="Lista de consultas"
-            :rows="appointments"
-            :columns="header"
-            :loading="loading"
-            :filter="search"
-            row-key="name"
-            :options="{
-              'items-per-page-options': [10, 25, 50, 100],
-              'items-per-page-text': 'Itens por página',
-            }"
-            no-data-label="Nenhuma consulta encontrada!"
-            no-results-label="Nenhuma consulta encontrada!"
-          />
+          
         </div>
       </v-card-text>
     </v-card>

@@ -40,13 +40,13 @@
 							</router-link>
 					</li>
 					<li class="sidebar-menu__item" id="user">
-						<router 
+						<router-link 
 							:to="{ name: 'User' }" 
 							class="name"
 						>
 							<i class="fa fa-users" aria-hidden="true"></i> 
 							<span class="label">Usuários</span>
-						</router>
+						</router-link>
 					</li>
 				</ul>
 		</section>
