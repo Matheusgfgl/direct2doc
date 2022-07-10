@@ -183,7 +183,7 @@
   import { mapGetters, mapActions } from 'vuex';
   //import AppointmentHeader from '../../headers/appointment-header.vue';
   //import Headers from '../types/header';
-  //import AppointmentInterface  from '@/types/appointment';
+  //import AppointmentInterface  from '~/types/appointment';
   import { defineComponent } from 'vue'
   import VueRouter from 'vue-router';
 

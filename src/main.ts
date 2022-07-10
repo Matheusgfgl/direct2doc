@@ -20,3 +20,4 @@ createApp(App)
   .use(store)
   .use(Quasar)
   .mount('#app')
+

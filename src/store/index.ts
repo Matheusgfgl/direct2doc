@@ -5,7 +5,7 @@ import createPersistedState from 'vuex-persistedstate';
 // Modules
 import app from './modules/appModule';
 import user from './modules/user';
-import shifts from './modules/shifts';
+import appointments from './modules/appointments';
 import customer from './modules/customer';
 import patients from './modules/patients';
 
@@ -13,7 +13,7 @@ export const store = createStore({
   modules: {
     app,
     user,
-    shifts,
+    appointments,
     customer,
     patients,
 

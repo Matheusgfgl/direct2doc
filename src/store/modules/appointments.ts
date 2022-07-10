@@ -13,7 +13,7 @@ export default {
       try {
         const res = await api.getAppointmentList(data);
 
-        commit('SET_USER_APPOINTMENTS', res.data.oracaoMotivos);
+        commit('SET_USER_APPOINTMENTS', res.data);
 
         return Promise.resolve(res);
       } catch (e) {
@@ -25,7 +25,7 @@ export default {
   },
 
   mutations: {
-    SET_USER_APPOINTMENTS( payload : Array<any>) {
+    SET_USER_APPOINTMENTS( state : object, payload : Array<any>) {
       state.appointments = payload;
     },
 

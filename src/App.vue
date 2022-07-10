@@ -6,30 +6,28 @@
   </v-app>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 
-export default defineComponent({
-  name: 'App',
+function fetchApi () { 
+  return fetch('develop.directrad.com.br')
+    .then(response => response.json())
+    .then(json => {
+      console.log(json)
+    })
+}
 
-  data () {
-    return {
-      //
-    }
-  },
-})
 </script>
 <style lang="scss">
   // --- Default
-  @import "@/assets/scss/base/_normalize.scss";
-  @import "@/assets/scss/base/_fonts.scss";
-  @import "@/assets/scss/base/_container.scss";
-  @import "@/assets/scss/base/_colors.scss";
-    @import "@/assets/scss/base/_variables.scss";
+  @import "~/assets/scss/base/_normalize.scss";
+  @import "~/assets/scss/base/_fonts.scss";
+  @import "~/assets/scss/base/_container.scss";
+  @import "~/assets/scss/base/_colors.scss";
+    @import "~/assets/scss/base/_variables.scss";
 
   // --- Common
-  @import "@/assets/scss/common/_buttons.scss";
-  @import "@/assets/scss/common/_form.scss";
+  @import "~/assets/scss/common/_buttons.scss";
+  @import "~/assets/scss/common/_form.scss";
 
 
   html {

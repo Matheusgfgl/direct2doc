@@ -1,4 +1,7 @@
 import axios from 'axios';
+declare const require: any
+//let axiosDefaults = require('axios/lib/defaults');
+//axiosDefaults.baseURL = '';
 
 // --- Config
 
@@ -9,10 +12,9 @@ axios.defaults.headers.common.Accept = 'application/json';
 // --- Instances
 
 // InPeace API
-const Direct2Doc = axios.create({
-  baseURL: 'develop.directrad.com.br',
-  // timeout: 30000,
-});
+const Direct2Doc = axios.create();
+
+Direct2Doc.defaults.baseURL = 'develop.directrad.com.br';
 
 // --- Export
 export {

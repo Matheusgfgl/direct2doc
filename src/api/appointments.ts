@@ -10,7 +10,7 @@ export default {
   },
   saveAppointment(data : Object) {
     return Direct2Doc({
-      method: 'POST',
+      method: 'GET',
       url: '/exame/save',
       data,
     });
