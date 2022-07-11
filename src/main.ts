@@ -11,8 +11,6 @@ import '@quasar/extras/material-icons-outlined/material-icons-outlined.css'
 
 // Import Quasar css
 import 'quasar/src/css/index.sass'
-
-
 loadFonts()
 
 createApp(App)

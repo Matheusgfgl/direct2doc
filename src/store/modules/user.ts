@@ -6,19 +6,29 @@ export default {
   state: {
     user: null,
     credentials: null,
+    autoLoginData: null,
+  },
+
+  getters: {
+    /**
+     * User data
+     */
+    userData: (state) => state.user,
+    userAutoLoginData: (state) => state.autoLoginData,
+    userToken: (state) => state.credentials?.token, // TODO: Configurar para usar token salvo na session
+    userLoggedId: (getters) => getters.user?.id,
+    userLoggedIn: (getters) => !!getters.userToken,
   },
 
   actions: {
-    async userLogin({ dispatch, commit }, { email, password }) {
-      console.log(email, password)
+    async userLogin({ dispatch, commit }, { username, password }) {
       try {
         const response = await authApi.postUserLogin({
-          email,
+          username,
           password,
         });
   
-        dispatch('userSetCredentials', response.data);
-        await commit('USER_SET_DATA', response.data);
+        dispatch('userSetCredentials', response.data.accessToken);
   
         return Promise.resolve(response);
       } catch (error) {
@@ -29,32 +39,43 @@ export default {
       }
     },
 
-    userSetCredentials({ commit }, { token, refreshToken }) {
+    userSetCredentials({ commit }, accessToken : string ) {
       // Setting the api token in axios instance
-      Direct2Doc.defaults.headers.common.Authorization = `Bearer ${token}`;
+      Direct2Doc.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+
+      console.log(Direct2Doc.defaults.headers.common.Authorization);
 
       // Setting the api token in session
-      window.sessionStorage.setItem('token', token);
+      window.sessionStorage.setItem('token', accessToken);
 
       // Commiting the token
       commit('USER_SET_CREDENTIALS', {
-        token: token,
-        refreshToken: refreshToken,
+        token: accessToken,
       });
     },
 
-    async userLogOut({ commit, dispatch }) {
+    userSetAutoLoginData({ commit, dispatch }, {
+      refreshToken, token, origin,
+    }) {
+      commit('USER_SET_AUTO_LOGIN', {
+        origin,
+        token,
+        refreshToken,
+      });
+
+      if (origin === 'SESSION' || origin === 'URL') {
+        dispatch('userSetCredentials', token);
+      }
+    },
+
+    async userLogOut({ commit }) {
       Promise.allSettled([
         // Reset user data
         commit('USER_RESET_ALL_DATA'),
-        // Reset chat data
-        dispatch('chatResetUser'),
         // Reset inpeace play data
-        dispatch('inpcPlayClearData'),
+        //dispatch('inpcPlayClearData'),
       ]);
 
-      // Remove session and local data
-      window.localStorage.removeItem('refreshToken');
       window.sessionStorage.removeItem('token');
 
       // Removing authorization from api requests
@@ -64,11 +85,22 @@ export default {
   
   mutations: {
     USER_SET_CREDENTIALS(state, payload : Object) {
-      state.credentials = credentials;
+      console.log(payload);
+      state.credentials = payload;
     },
 
     USER_SET_DATA(state, payload : Object) {
       state.user = payload;
+    },
+
+    USER_RESET_ALL_DATA(state) {
+      console.log('deslogou');
+      state.user = null;
+      state.credentials = null;
+    },
+
+    USER_SET_AUTO_LOGIN(state, payload) {
+      state.autoLoginData = payload;
     },
   }
 }

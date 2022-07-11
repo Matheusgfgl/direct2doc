@@ -47,23 +47,6 @@ $text-4xl: 2.25rem;   // 36px
 $text-5xl: 3rem;      // 48px
 $text-6xl: 4rem;      // 64px
 
-// -- Line height
-// Ex.: line-height: $leading-tight;
-$leading-none: 1;
-$leading-tight: 1.25;
-$leading-snug: 1.375;
-$leading-normal: 1.5;
-$leading-relaxed: 1.625;
-$leading-loose: 2;
-
-// -- Letter Spacing
-// Ex.: letter-spacing: $tracking-tight;
-$tracking-tighter: -0.05em; // -0.05 * (tamanho da fonte)
-$tracking-tight: -0.025em;  // -0.025 * (tamanho da fonte)
-$tracking-normal: 0;        // 0
-$tracking-wide: 0.025em;    // 0.025 * (tamanho da fonte)
-$tracking-wider: 0.05em;    // 0.05 * (tamanho da fonte)
-$tracking-widest: 0.1em;    // 0.1 * (tamanho da fonte)
 
 // -- Z-index
 $z--1: -1;

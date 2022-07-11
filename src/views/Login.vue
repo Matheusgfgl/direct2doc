@@ -11,7 +11,7 @@
         <p class="login__content__text">Acesse consultas e prontuários com toda praticidade e segurança</p>
         <div class="access-page__error">
           <AlertMessage
-            v-if="!!formFeedback.message"
+            v-if="formFeedback.message"
             :type="formFeedback.type"
           >
             <template slot="icon">
@@ -33,7 +33,7 @@
           name="Email"
           class="input-item"
           tag="div"
-          :rules="isRequired(user.email)"
+          :rules="isRequired(user.username)"
         >
           <div class="input-item input-item__floated-label">
             <label
@@ -43,7 +43,7 @@
               Email
             </label>
             <input
-              v-model="user.email"
+              v-model="user.username"
               type="email"
               name="email"
               inputmode="email"
@@ -125,17 +125,18 @@
 </template>
 
 <script lang="ts">
-import { useField } from 'vee-validate';
+// Message
+const AlertMessage = () => import('~/components/common/message/AlertMessage.vue');
 import { mapActions } from 'vuex';
 
 import { defineComponent } from 'vue'
-import VueRouter from 'vue-router';
 import { Field, Form } from 'vee-validate';
 
 export default defineComponent({
   name: 'Login',
 
   components: {
+    AlertMessage,
     Field,
     Form,
   },
@@ -147,7 +148,7 @@ export default defineComponent({
         message: '',
       },
       user: {
-        email: '',
+        username: '',
         password: '',
       },
       loading: false,
@@ -178,7 +179,7 @@ export default defineComponent({
     async handleSubmit() {
       this.loading = true
 
-      const isFormValid = this.user.email && this.user.password;
+      const isFormValid = this.user.username && this.user.password;
 
       if (!isFormValid) {
         this.formFeedback = {
@@ -198,6 +199,8 @@ export default defineComponent({
           message: 'Usuario ou senha incorretos',
         };
       }
+
+      console.log(this.formFeedback);
 
       this.loading = false;
     },

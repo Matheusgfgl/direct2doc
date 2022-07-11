@@ -8,7 +8,7 @@ export default {
     });
   },
 
-  getClinicsList() {
+  getCustomersList() {
     return Direct2Doc({
       method: 'GET',
       url: '/exame/listaClinicas',

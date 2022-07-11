@@ -174,7 +174,6 @@
           <q-table
             title="Lista de consultas"
             :rows="appointments"
-            :columns="header"
             :loading="loading"
             :filter="search"
             row-key="name"
@@ -204,7 +203,7 @@
 
   data() {
     return {
-      appointments: null,
+      appointments: [],
       loading: false,
       search: '',
       header: null,
@@ -230,12 +229,12 @@
       this.loading = true;
       try {
       
-      const response = this.getUserShifts();
+      const response = await this.getUserShifts();
 
-      const items = response;
+      const items = response.data;
       console.log(items)
 
-      //this.appointments = items;
+      this.appointments = items;
 
       } catch (error) {
         console.error('Ocorreu um erro ao listar candidatos');

@@ -1,25 +1,25 @@
 import api from '../../api/customer';
 export default {
   state: {
-    clinics: [],
+    customers: [],
     agreements: [],
   },
 
   getters: {
-    getClinics: (state: Object) => state.clinics,
+    getCustomers: (state: Object) => state.customers,
     getAgreements: (state: Object) => state.agreements,
   },
 
   actions: {
-    async getClinicsAll({ commit }) {
+    async getCustomersAll({ commit }) {
       try {
-        const res = await api.getClinicsList();
+        const response = await api.getCustomersList();
 
-        commit('SET_USER_patients', res.data.oracaoMotivos);
+        commit('SET_CUSTOMERS', response.data);
 
-        return Promise.resolve(res);
+        return Promise.resolve(response);
       } catch (e) {
-        commit('SET_USER_patients', null);
+        commit('SET_CUSTOMERS', null);
 
         return Promise.reject(e);
       }
@@ -27,13 +27,15 @@ export default {
 
     async getAgreementsAll({ commit }) {
       try {
-        const res = await api.getAgreementsList();
+        const response = await api.getAgreementsList();
 
-        commit('SET_USER_patients', res.data.oracaoMotivos);
+        console.log(response.data);
 
-        return Promise.resolve(res);
+        commit('SET_AGREEMENTS', response.data);
+
+        return Promise.resolve(response);
       } catch (e) {
-        commit('SET_USER_patients', null);
+        commit('SET_AGREEMENTS', null);
 
         return Promise.reject(e);
       }
@@ -41,11 +43,11 @@ export default {
   },
 
   mutations: {
-    SET_CLINICS_LIST( payload : Array<any>) {
-      state.clinics = payload;
+    SET_CUSTOMERS( state, payload : Array<any>) {
+      state.customers = payload;
     },
 
-    SET_AGREEMENTS_LIST( payload : Array<any>) {
+    SET_AGREEMENTS( state, payload : Array<any>) {
       state.agreements = payload;
     },
 

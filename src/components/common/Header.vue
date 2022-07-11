@@ -37,28 +37,39 @@
                           <a href="#" class="btn btn-default btn-flat inner-switch lg-off"> </a>
                       </div>
                       <div class="pull-right">
-                          <a href="https://www.direct2doc.com.br/logout" class="btn-default btn-flat">Sair</a>
+                        <button 
+                          class="btn-default btn-flat"
+                          @click.prevent="logout"
+                        >
+                          Sair
+                        </button>
                       </div>
                     </li>
                 </ul>
               </li>
             <li>
-            <a href="https://www.direct2doc.com.br/logout" style="padding-top: 18px"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a>
+            <button
+              @click.prevent="logout"
+            >
+              <i class="fa fa-sign-out" aria-hidden="true"></i> 
+              Sair
+            </button>
             </li>
         </ul>
-      </div>
-            
-      </nav>
-        
+      </div>      
+      </nav>  
     </header>
 </template>
 
 <script lang="ts">
-import VueRouter from 'vue-router';
+// Mixin
+import logOutMixin from '../../mixins/logoutMixin';
 import { defineComponent } from 'vue'
 
  export default defineComponent({
   name: 'header',
+
+  mixins: [logOutMixin],
   
   data() {
     return {
