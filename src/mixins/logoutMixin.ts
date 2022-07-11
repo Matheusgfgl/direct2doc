@@ -1,6 +1,8 @@
 import { mapActions } from 'vuex';
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
+
   methods: {
     ...mapActions([
       'userLogOut',
@@ -22,4 +24,4 @@ export default {
       this.appSetLoadingState({ context: 'GLOBAL', status: false });
     },
   },
-};
+});

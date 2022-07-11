@@ -6,14 +6,16 @@
     <Header />
     <main class="page-content">
       <Navbar />
-      <router-view v-slot="{ Component }">
-        <transition 
-          name="slide-fade"
-          mode="out-in"
-        >
-          <component :is="Component" />
-        </transition>
+      <div class="page-content-large">
+        <router-view v-slot="{ Component }">
+          <transition 
+            name="slide-fade"
+            mode="out-in"
+          >
+            <component :is="Component" />
+          </transition>
       </router-view>
+      </div>
     </main>
   </div>
 </template>
@@ -52,15 +54,12 @@
       height: 100%;
       display: flex;
       flex-direction: row;
-    /*
+  
 
       &-large {
-        @include screen(tablet-up) {
-          width: 80%;
-          margin: 0 auto;
-        }
+        width: 85%;
       }
-
+  /*
       &-medium {
         @include screen(tablet-up) {
           width: 60%;

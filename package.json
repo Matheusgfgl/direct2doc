@@ -1,7 +1,8 @@
 {
-  "name": "direct2Doc",
+  "name": "Direct2Doc",
   "private": true,
   "version": "1.0.0",
+  "build": true,
   "scripts": {
     "serve": "vite",
     "build": "vue-tsc --noEmit && vite build",

@@ -1,6 +1,6 @@
 
 import authApi from '../../api/auth';
-import { Direct2Doc } from '../../config/axios';
+import  Direct2Doc  from '../../config/axios';
 
 export default {
   state: {
@@ -54,13 +54,10 @@ export default {
       });
     },
 
-    userSetAutoLoginData({ commit, dispatch }, {
-      refreshToken, token, origin,
-    }) {
+    userSetAutoLoginData({ commit, dispatch }, { token, origin }) {
       commit('USER_SET_AUTO_LOGIN', {
         origin,
         token,
-        refreshToken,
       });
 
       if (origin === 'SESSION' || origin === 'URL') {
@@ -99,7 +96,7 @@ export default {
       state.credentials = null;
     },
 
-    USER_SET_AUTO_LOGIN(state, payload) {
+    USER_SET_AUTO_LOGIN(state, payload : Object) {
       state.autoLoginData = payload;
     },
   }

@@ -1,4 +1,4 @@
-import { Direct2Doc } from '../config/axios/index';
+import  Direct2Doc  from '../config/axios/index';
 
 export default {
   postUserLogin(data : object) {

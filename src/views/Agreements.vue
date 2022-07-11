@@ -41,7 +41,6 @@
         class="add-professional elevation-0 mr-3"
         color="#00ADAB"
         dark
-        @click="openAppointmentModal"
         >Adicionar Convênio</v-btn
       >
       <div class="q-pa-md">
@@ -65,7 +64,7 @@
 
 <script lang="ts">
 // Vuex
-  import { mapGetters, mapActions } from 'vuex';
+  import { mapActions } from 'vuex';
   //import AppointmentHeader from '../../headers/appointment-header.vue';
   //import Headers from '../types/header';
   //import AppointmentInterface  from '~/types/appointment';
@@ -97,18 +96,16 @@
     ]),
 
     async getAgreements(): Promise<void> {
-      console.log('agreements');
       this.loading = true;
       try {
       
       const response = await this.getAgreementsAll();
 
       this.agreements = response.data;
-      console.log(this.agreements)
 
       } catch (error) {
         console.error('Ocorreu um erro ao listar candidatos');
-        this.agreements = null;
+        this.agreements = [];
       }
 
       this.loading = false;

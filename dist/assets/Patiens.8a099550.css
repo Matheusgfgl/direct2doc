@@ -1,1 +1,0 @@
-.patients{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;width:100%;background:var(--gray-400)}.patients__content{display:flex;flex-direction:column;align-items:center;background:var(--white);margin:2rem 0;padding:1.5rem;max-width:26rem;font-size:14px}

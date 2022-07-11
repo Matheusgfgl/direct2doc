@@ -238,7 +238,7 @@
 
       } catch (error) {
         console.error('Ocorreu um erro ao listar candidatos');
-        this.appointments = null;
+        this.appointments = [];
       }
 
       this.loading = false;

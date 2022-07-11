@@ -17,6 +17,4 @@ const Direct2Doc = axios.create();
 Direct2Doc.defaults.baseURL = 'http://develop.directrad.com.br';
 
 // --- Export
-export {
-  Direct2Doc,
-};
+export default Direct2Doc;

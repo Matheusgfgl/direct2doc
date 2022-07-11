@@ -7,44 +7,47 @@
 </template>
 
 <script lang="ts">
- import { defineComponent } from 'vue'
-  import { Direct2Doc } from './config/axios';
+  import { defineComponent } from 'vue'
+  import  Direct2Doc  from './config/axios/index';
+  import { mapActions } from 'vuex';
 
 export default defineComponent({
   name: 'Agreements',
 
+  methods: {
+  ...mapActions([
+      'userSetAutoLoginData',
+      'userLogOut'
+    ]),
+  },
+
   created() {
     if (sessionStorage.getItem('token')) {
-      console.log(sessionStorage.getItem('token'))
       // If the session has token and user id save the data on vuex
-      this.$store.dispatch('userSetAutoLoginData', {
+      this.userSetAutoLoginData({
         origin: 'SESSION',
         token: sessionStorage.getItem('token'),
       });
+    } else {
+      // Redirect to login page
+       this.$router.replace({ name: 'Login' }).catch(() => {});
     }
     Direct2Doc.interceptors.response.use(
-      (response) => response,
-        async (error) => {
+      (response : any) => response,
+        async (error: any) => {
           if (error.response) {
             /**
              * Checking if some request response has status code 401
              * if it's occurs then logout the user and reload page
             */
-            if (error.response.status === 401 && (this.$route.name !== 'userAccess')) {
+            if (error.response.status === 401 && (this.$route.name !== 'Login')) {
               // Logout the user
-              await this.$store.dispatch('userLogOut');
-              // Reset any query string params
-              await this.$router.replace({ name: 'churchHome', query: {} }).catch(() => {});
+              await this.userLogOut();
+              // Redirect to login page
+              await this.$router.replace({ name: 'Login' }).catch(() => {});
               // Force reaload
               window.location.reload();
             }
-          } else {
-            await this.$router.replace({
-              name: 'ErrorPage',
-              query: {
-                message: this.$t('HOME.MESSAGE.ERROR.GENERIC'),
-              },
-            }).catch(() => {});
           }
 
           return Promise.reject(error);

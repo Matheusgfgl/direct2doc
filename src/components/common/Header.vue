@@ -39,7 +39,6 @@
                       <div class="pull-right">
                         <button 
                           class="btn-default btn-flat"
-                          @click.prevent="logout"
                         >
                           Sair
                         </button>
@@ -49,7 +48,6 @@
               </li>
             <li>
             <button
-              @click.prevent="logout"
             >
               <i class="fa fa-sign-out" aria-hidden="true"></i> 
               Sair
@@ -62,14 +60,15 @@
 </template>
 
 <script lang="ts">
-// Mixin
-import logOutMixin from '../../mixins/logoutMixin';
 import { defineComponent } from 'vue'
+
+// Mixin
+//import logOutMixin from '~/mixins/logoutMixin';
 
  export default defineComponent({
   name: 'header',
 
-  mixins: [logOutMixin],
+  //mixins: [logOutMixin],
   
   data() {
     return {

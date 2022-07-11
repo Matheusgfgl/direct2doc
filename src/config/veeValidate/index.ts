@@ -1,6 +1,6 @@
-import dayjs from 'dayjs';
+ import dayjs from 'dayjs';
 
-import { configure } from 'vee-validate';
+//import { configure } from 'vee-validate';
 //import {
   // eslint-disable-next-line camelcase
  // required, email, confirmed, min, max, regex, alpha_spaces,

@@ -14,26 +14,14 @@ export default defineConfig({
       '~/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
-
-  define: {
-    axios: {
-      baseURL:"develop.directrad.com.br"
-    },
-  },
   server: {
     proxy: {
       host: '',
       // com opções
       '/api': {
-        target: 'develop.directrad.com.br',
+        target: 'http://develop.directrad.com.br',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
-      },
-      // com RegEx
-      '^/fallback/.*': {
-        target: 'develop.directrad.com.br',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/fallback/, '')
       },
     }
   },

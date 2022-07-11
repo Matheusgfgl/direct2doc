@@ -62,7 +62,7 @@ export default {
 <style lang="scss" scoped>
 .main-sidebar {
 	background-color: #222d32;
-	width: 20%;
+	width: 15%;
 	color: #b8c7ce;
 
 	.sidebar-menu {

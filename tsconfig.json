@@ -24,7 +24,7 @@
     }
   },
   "exclude": ["dist", "node_modules", "cypress"],
-  "include": ["src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/config/veeValidate/index.ts", "src/config/axios/index.ts"],
+  "include": ["src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [
     { "path": "./tsconfig.node.json" }
   ],
