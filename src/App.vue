@@ -8,7 +8,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import  Direct2Doc  from './config/axios/index';
+  //import  Direct2Doc  from './config/axios/index';
   import { mapActions } from 'vuex';
 
 export default defineComponent({
@@ -32,6 +32,7 @@ export default defineComponent({
       // Redirect to login page
        this.$router.replace({ name: 'Login' }).catch(() => {});
     }
+    /*
     Direct2Doc.interceptors.response.use(
       (response : any) => response,
         async (error: any) => {
@@ -40,6 +41,7 @@ export default defineComponent({
              * Checking if some request response has status code 401
              * if it's occurs then logout the user and reload page
             */
+           /**
             if (error.response.status === 401 && (this.$route.name !== 'Login')) {
               // Logout the user
               await this.userLogOut();
@@ -53,6 +55,7 @@ export default defineComponent({
           return Promise.reject(error);
       },
     );
+    */
   }
 });
 

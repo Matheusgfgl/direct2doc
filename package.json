@@ -6,7 +6,10 @@
   "scripts": {
     "serve": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint --ext .ts,vue --ignore-path .gitignore .",
+    "lint:css": "stylelint \"./src/**/*.{vue,htm,html,css,sss,less,scss,sass}\" --cache",
+    "cz": "cz",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -36,9 +39,11 @@
     "@vitejs/plugin-vue": "^2.3.1",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^10.0.0",
+    "commitizen": "^4.2.2",
     "eslint": "^8.13.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.6.0",
+    "babel-eslint": "^10.1.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.8",
     "prettier": "^2.6.2",
