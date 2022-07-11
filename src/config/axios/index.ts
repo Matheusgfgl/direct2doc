@@ -14,7 +14,7 @@ axios.defaults.headers.common.Accept = 'application/json';
 // InPeace API
 const Direct2Doc = axios.create();
 
-Direct2Doc.defaults.baseURL = 'http://develop.directrad.com.br';
+Direct2Doc.defaults.baseURL = 'https://develop.directrad.com.br';
 
 // --- Export
 export default Direct2Doc;
